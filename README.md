@@ -1,5 +1,7 @@
 # Leanite Static
 
+访问[我们的开发日志网站](https://copws.github.io/leanite-static/)预览博客效果
+
 从之前的 [Leanite 动态版本](https://github.com/copws/leanite)迁移而来。此前的Leanite项目由于基于LeanCloud，而随着现在LeanCloud的停服，原项目也就自然死亡了。截至写本文时开发者已基本失去React编程能力，至于为什么有这个项目，还要感谢[DeepSeek Harness](https://www.deepseek.com/harness/)，梁圣送了6块赠金，本项目只花了3块……
 
 Leanite Static的界面设计和原来基本一致（有一些设计是我指使大肥鱼改的，比如顶栏删了），但是已经完全转向静态博客了。具体操作细节我就不多说了，看肥鱼表演：
