@@ -7,7 +7,7 @@
   "bulletin": "这里是 Leanite Static 的开发日志，会定期发布有关 Leanite Static 的更新内容。",
   "siteURL": "https://copws.github.io/leanite-static/",
   "base": "/leanite-static/",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "language": "zh-CN",
   "adminUsername": "Copcin",
   "adminPasswordHash": "9cffebf746f9ef64cbc05b1e82c4e4aab77609aa0fcd63865ebf5cc9a63a42e4"

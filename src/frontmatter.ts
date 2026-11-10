@@ -71,7 +71,7 @@ export function parseFrontMatter(raw: string): FrontMatterResult {
 
 export function stringifyFrontMatter(
   data: FrontMatterInput,
-  body: string
+  body: string,
 ): string {
   const lines: string[] = ["---"];
   lines.push(`title: ${quoteYaml(data.title)}`);
@@ -109,21 +109,21 @@ function parseYamlBlock(lines: string[]): Record<string, unknown> {
     }
     if (/^\s/.test(line)) {
       throw new FrontMatterError(
-        `第 ${lineNumber} 行：不该缩进，请检查上一行的写法`
+        `第 ${lineNumber} 行：不该缩进，请检查上一行的写法`,
       );
     }
 
     const separator = findKeySeparator(line);
     if (separator < 0) {
       throw new FrontMatterError(
-        `第 ${lineNumber} 行：缺少冒号，格式应为 “key: value”`
+        `第 ${lineNumber} 行：缺少冒号，格式应为 “key: value”`,
       );
     }
 
     const key = line.slice(0, separator).trim();
     if (!KEY_PATTERN.test(key)) {
       throw new FrontMatterError(
-        `第 ${lineNumber} 行：不支持的字段名 “${key}”（只能用字母、数字、下划线和短横线）`
+        `第 ${lineNumber} 行：不支持的字段名 “${key}”（只能用字母、数字、下划线和短横线）`,
       );
     }
     if (key in data) {
@@ -197,7 +197,7 @@ function stripComment(text: string): string {
 
 function readBlockArray(
   lines: string[],
-  start: number
+  start: number,
 ): { items: string[]; next: number } {
   const items: string[] = [];
   let index = start;
@@ -221,7 +221,7 @@ function readBlockArray(
 function readBlockScalar(
   lines: string[],
   start: number,
-  indicator: string
+  indicator: string,
 ): { value: string; next: number } {
   const folded = indicator.startsWith(">");
   const stripFinalNewline = indicator.endsWith("-");
@@ -267,13 +267,13 @@ function parseInlineValue(text: string, lineNumber: number): unknown {
   if (text.startsWith("[")) {
     if (!text.endsWith("]")) {
       throw new FrontMatterError(
-        `第 ${lineNumber} 行：数组缺少右方的 ]，或者请改用 “- 项目” 的多行写法`
+        `第 ${lineNumber} 行：数组缺少右方的 ]，或者请改用 “- 项目” 的多行写法`,
       );
     }
     const content = text.slice(1, -1).trim();
     if (!content) return [];
     return splitTopLevel(content).map((part) =>
-      parseScalar(part.trim(), lineNumber)
+      parseScalar(part.trim(), lineNumber),
     );
   }
   return parseScalar(text, lineNumber);
@@ -316,7 +316,7 @@ function parseScalar(text: string, lineNumber: number): unknown {
   if (text.startsWith('"')) {
     if (!text.endsWith('"') || text.length < 2) {
       throw new FrontMatterError(
-        `第 ${lineNumber} 行：双引号没有成对出现（值里如果有英文双引号，请用 \\" 转义）`
+        `第 ${lineNumber} 行：双引号没有成对出现（值里如果有英文双引号，请用 \\" 转义）`,
       );
     }
     const inner = text.slice(1, -1);
@@ -416,6 +416,7 @@ export function slugify(input: string): string {
     .trim()
     .toLowerCase()
     .replace(/[\s_]+/g, "-")
+    .replace(/\.+/g, "-") // 新增：点也转成连字符
     .replace(/[\\/:*?"<>|#%&{}$!'@+`=~^[\];,]/g, "")
     .replace(/-+/g, "-")
     .replace(/^[.-]+|[.-]+$/g, "")
@@ -490,6 +491,6 @@ export function guessTitle(markdown: string): string {
 export function today(): string {
   const now = new Date();
   return `${now.getFullYear()}-${pad2(now.getMonth() + 1)}-${pad2(
-    now.getDate()
+    now.getDate(),
   )}`;
 }

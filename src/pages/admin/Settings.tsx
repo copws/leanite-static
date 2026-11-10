@@ -110,7 +110,7 @@ export default function Settings() {
           : `${form.siteURL.trim()}/`
         : "",
       base: normalizeBasePath(form.base),
-      version: form.version.trim() || "0.3.0",
+      version: form.version.trim() || "0.3.1",
       language: form.language.trim() || "zh-CN",
       adminUsername: credentials.username,
       adminPasswordHash: credentials.passwordHash,
@@ -274,7 +274,7 @@ export default function Settings() {
           <Input
             value={form.version}
             onChange={(event) => update({ version: event.currentTarget.value })}
-            placeholder="0.3.0"
+            placeholder="0.3.1"
           />
         </OptionCard>
       </InfoCard>

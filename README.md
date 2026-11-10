@@ -99,4 +99,4 @@ npm run import:leancloud -- ./leancloud-export
 
 ## 版本
 
-0.3.0（静态博客版）
+0.3.1（静态博客版）

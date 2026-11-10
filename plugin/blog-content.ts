@@ -63,7 +63,7 @@ const DEFAULT_SETTINGS: BlogSettings = {
   bulletin: "欢迎来到 Leanite！这里的内容都来自 Markdown 文件。",
   siteURL: "",
   base: "/",
-  version: "0.3.0",
+  version: "0.3.1",
   language: "zh-CN",
   adminUsername: "admin",
   // SHA-256("admin")

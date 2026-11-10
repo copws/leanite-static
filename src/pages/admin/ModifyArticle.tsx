@@ -253,7 +253,7 @@ export default function ModifyArticle() {
             <Input
               value={editor.title}
               onChange={(event) => update({ title: event.currentTarget.value })}
-              style={{ width: "50vw" }}
+              style={{ width: "clamp(200px, 30vw, 380px)" }}
               placeholder="文章标题"
             />
             <Button type="primary" onClick={handleExport}>
