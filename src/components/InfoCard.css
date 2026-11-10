@@ -1,0 +1,4 @@
+p {
+  overflow-wrap: break-word;
+  width: calc(50vw-40px);
+}
